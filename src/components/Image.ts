@@ -7,6 +7,8 @@ import { type as typeHero } from './Hero';
 
 export const type = 'mj-image';
 
+const validateDimension = (value) => value === 'auto' ? '100px' : value;
+
 export default (editor: Editor, { coreMjmlModel, coreMjmlView }: any) => {
   editor.Components.addType(type, {
     isComponent: isComponentType(type),
@@ -26,6 +28,8 @@ export default (editor: Editor, { coreMjmlModel, coreMjmlView }: any) => {
           'container-background-color', 'align',
         ],
         'style-default': {
+          'width': validateDimension('auto'),
+          'height': validateDimension('auto'),
           'padding-top': '10px',
           'padding-bottom': '10px',
           'padding-right': '25px',
